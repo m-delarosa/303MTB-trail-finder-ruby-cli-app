@@ -8,10 +8,11 @@ What’s your name?
 
 **Prompts for password if an existing user login
 Welcome back! What would you like to do?
-- View Profile
-- Go Ride
+- View My Profile
+- Go Ride!
 - My Trails
-- Send Message
+- Browse All Trails
+- **Send Message
 
 Hey,  (name). Where would would you like to ride?
 - Boulder
@@ -53,6 +54,7 @@ Shows Trail Details in menu form:
 - Skill Level:
 - Length:
 - Ride Style:
-- **Condition
+- **Condition:
+- Update Condition
 
 Hit Return to add this trail to your Trails Finder list.

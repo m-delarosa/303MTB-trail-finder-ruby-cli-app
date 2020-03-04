@@ -20,15 +20,15 @@ ActiveRecord::Schema.define(version: 2020_03_04_164509) do
     t.string "style"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-  end
-
-  create_table "usertrails", force: :cascade do |t|
+  create_table "user_trails", force: :cascade do |t|
     t.integer "user_id"
     t.integer "trail_id"
-    t.index ["trail_id"], name: "index_usertrails_on_trail_id"
-    t.index ["user_id"], name: "index_usertrails_on_user_id"
+    t.index ["trail_id"], name: "index_user_trails_on_trail_id"
+    t.index ["user_id"], name: "index_user_trails_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
   end
 
 end
