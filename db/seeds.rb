@@ -1,3 +1,4 @@
+# require_relative '../config/environment'
 UserTrail.destroy_all
 User.destroy_all
 Trail.destroy_all
@@ -22,5 +23,9 @@ marshall = Trail.create(name: "Marshall Mesa", location: "Boulder", length: 11, 
 west_mag = Trail.create(name: "West Magnolia", location: "Boulder", length: 8, difficulty: "Intermediate", style: "Trail")
 heil = Trail.create(name: "Heil Valley Ranch", location: "Boulder", length: 8, difficulty: "Intermediate", style: "Trail")
 
-
 #usertrails
+user_trail1 = UserTrail.create(user: mike, trail: apex)
+user_trail2 = UserTrail.create(user: nick, trail: walker)
+user_trail3 = UserTrail.create(user: mike, trail: heil)
+
+# binding.pry
