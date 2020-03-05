@@ -11,6 +11,7 @@ class Cli
         @session_user = session_user
         
     end
+    
 
    def welcome
     puts "\nWelcome to the 303-MTB Trail Finder App!\n\n"
@@ -50,6 +51,21 @@ class Cli
     end
 
     def view_all_trails
-        puts "Views all trails"
+        system("clear")
+        response = prompt.select("Please choose a city.", ["Boulder", "Colorado Springs", "Denver", "Go Back"])
+        if (response == "Boulder")
+            show_boulder_trails
+        elsif (response == "Denver")
+            show_denver_trails
+        end
+    end
+
+    def show_boulder_trails
+        system("clear")
+        binding.pry
+        boulder_trails = Trail.where(location: "Boulder")
+        choices = (boulder_trails.map {|trail| trail.name}) << "Back"
+        response = prompt.select("Pick a trail.", choices )
+        # if (response == "")
     end
 end
