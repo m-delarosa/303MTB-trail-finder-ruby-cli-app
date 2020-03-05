@@ -32,6 +32,24 @@ class Cli
 
     def main_menu
         choices = ["Find a New Trail to Ride", "View Your Saved Trails", "Browse All Trails",]
-        prompt.multi_select("What would you like to do today?", choices)
+        response = prompt.select("What would you like to do today?", choices)
+        if (response  == "Find a New Trail to Ride")
+            find_trail
+        elsif (response == "View Your Saved Trails")
+            saved_trails
+        else view_all_trails
+        end
+    end
+
+    def find_trail
+        puts "Starts find trail"
+    end
+
+    def saved_trails
+        puts "Views saved trails"
+    end
+
+    def view_all_trails
+        puts "Views all trails"
     end
 end
