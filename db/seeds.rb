@@ -14,7 +14,7 @@ apex = Trail.create(name: "Apex Park Tour", location: "Denver", length: 9, diffi
 north_table = Trail.create(name: "North Table Loop", location: "Denver", length: 8, difficulty: "Intermediate", style: "Cross Country")
 dakota = Trail.create(name: "Dakota Ridge", location: "Denver", length: 8, difficulty: "Difficult", style: "Enduro")
 green_mountain_novice = Trail.create(name: "Green Mountain Novice Loop", location: "Denver", length: 7, difficulty: "Novice", style: "Cross Country")
-green_mountain_intermediate = Trail.create(name: "Green Mountain Novice Intermediate Loop", location: "Denver", length: 9, difficulty: "Intermediate", style: "Cross Country")
+green_mountain_intermediate = Trail.create(name: "Green Mountain Intermediate Loop", location: "Denver", length: 9, difficulty: "Intermediate", style: "Cross Country")
 
 #boulder
 betasso = Trail.create(name: "Betasso Preserve", location: "Boulder", length: 8, difficulty: "Intermediate", style: "Cross Country")

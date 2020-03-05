@@ -55,7 +55,7 @@ class Cli
 
     def view_all_trails
         system("clear")
-        response = prompt.select("Please choose a city.", ["Boulder", "Colorado Springs", "Denver", "Go Back"])
+        response = prompt.select("Please choose a city.", ["Boulder", "Denver", "Go Back"])
         if (response == "Boulder")
             show_boulder_trails
         elsif (response == "Denver")
@@ -66,7 +66,7 @@ class Cli
     def show_boulder_trails
         system("clear")
         boulder_trails = Trail.where(location: "Boulder")
-        choices = (boulder_trails.map {|trail| trail.name}) << "Back"
+        choices = (boulder_trails.map {|trail| trail.name}) << "Go Back"
         response = prompt.select("Pick a trail.", choices )
         if (response == "Betasso Preserve")
             display_betasso
@@ -79,6 +79,120 @@ class Cli
         elsif (response == "Heil Valley Ranch")
             display_heil
         else view_all_trails
+        end
+    end
+
+    def show_denver_trails
+        system("clear")
+        denver_trails = Trail.where(location: "Denver")
+        choices = (denver_trails.map {|trail| trail.name}) << "Go Back"
+        response = prompt.select("Pick a trail.", choices )
+        if (response == "Apex Park Tour")
+            display_apex
+        elsif (response == "North Table Loop")
+            display_table
+        elsif (response == "Dakota Ridge")
+            display_dakota
+        elsif (response == "Green Mountain Novice Loop")
+            display_gm_novice
+        elsif (response == "Green Mountain Intermediate Loop")
+            display_gm_intermediate
+        else view_all_trails
+        end
+    end
+
+    def display_apex
+        system("clear")
+        apex = Trail.all.find_by(name: "Apex Park Tour")
+        
+        puts "#{apex.name}\nLength: #{apex.length} Miles\nDifficulty: #{apex.difficulty}\nStyle: #{apex.style}"
+        response = prompt.yes?('Would you like to save this trail?')
+        if response == true
+            UserTrail.find_or_create_by(user: session_user, trail: apex)
+            system("clear")
+            puts "Trail Saved Sucessfully! Now Go Ride!"
+            response = prompt.yes?("...or would you like to view other Denver Trails now? (nerd)")
+            if response == true
+                show_denver_trails
+            else main_menu
+            end
+        else show_denver_trails
+        end
+    end
+
+    def display_table
+        system("clear")
+        table = Trail.all.find_by(name: "North Table Loop")
+        
+        puts "#{table.name}\nLength: #{table.length} Miles\nDifficulty: #{table.difficulty}\nStyle: #{table.style}"
+        response = prompt.yes?('Would you like to save this trail?')
+        if response == true
+            UserTrail.find_or_create_by(user: session_user, trail: table)
+            system("clear")
+            puts "Trail Saved Sucessfully! Now Go Ride!"
+            response = prompt.yes?("...or would you like to view other Denver Trails now? (nerd)")
+            if response == true
+                show_denver_trails
+            else main_menu
+            end
+        else show_denver_trails
+        end
+    end
+
+    def display_dakota
+        system("clear")
+        dakota = Trail.all.find_by(name: "Dakota Ridge")
+        
+        puts "#{dakota.name}\nLength: #{dakota.length} Miles\nDifficulty: #{dakota.difficulty}\nStyle: #{dakota.style}"
+        response = prompt.yes?('Would you like to save this trail?')
+        if response == true
+            UserTrail.find_or_create_by(user: session_user, trail: dakota)
+            system("clear")
+            puts "Trail Saved Sucessfully! Now Go Ride!"
+            response = prompt.yes?("...or would you like to view other Denver Trails now? (nerd)")
+            if response == true
+                show_denver_trails
+            else main_menu
+            end
+        else show_denver_trails
+        end
+    end
+
+    def display_gm_novice
+        system("clear")
+        gm_novice = Trail.all.find_by(name: "Green Mountain Novice Loop")
+        
+        puts "#{gm_novice.name}\nLength: #{gm_novice.length} Miles\nDifficulty: #{gm_novice.difficulty}\nStyle: #{gm_novice.style}"
+        response = prompt.yes?('Would you like to save this trail?')
+        if response == true
+            UserTrail.find_or_create_by(user: session_user, trail: gm_novice)
+            system("clear")
+            puts "Trail Saved Sucessfully! Now Go Ride!"
+            response = prompt.yes?("...or would you like to view other Denver Trails now? (nerd)")
+            if response == true
+                show_denver_trails
+            else main_menu
+            end
+        else show_denver_trails
+        end
+    end
+
+    def display_gm_intermediate
+        system("clear")
+        gm_intermediate = Trail.all.find_by(name: "Green Mountain Intermediate Loop")
+        
+        puts "#{gm_intermediate.name}\nLength: #{gm_intermediate.length} Miles\nDifficulty: #{gm_intermediate.difficulty}\nStyle: #{gm_intermediate.style}"
+        response = prompt.yes?('Would you like to save this trail?')
+        if response == true
+            UserTrail.find_or_create_by(user: session_user, trail: gm_intermediate)
+            system("clear")
+            puts "Trail Saved Sucessfully! Now Go Ride!"
+            response = prompt.yes?("...or would you like to view other Denver Trails now? (nerd)")
+            if response == true
+                show_denver_trails
+            else main_menu
+            end
+        else show_denver_trails
         end
     end
     
