@@ -1,3 +1,4 @@
+<img src='https://github.com/m-delarosa/303-mtb-trails-cli-app/blob/master/design/images/303TF_log_in.png' />
 ## Project title
 
 303MTB Trail Finder CLI App - Generates Mountain Bike Trail recommendations for new and veteren riders alike in the 303 area code of Colorado.
@@ -12,19 +13,15 @@ The 303MTB Trail Finder app is also meant to help preserve our trails. When a tr
 
 ## Build status
 
-Iteration 0 complete. Currently adding additional functionality such as MTB Project API data.
-
-## Screenshots
-
-<img src='https://github.com/m-delarosa/303-mtb-trails-cli-app/blob/master/design/images/303TF_log_in.png' />
+Iteration 0 functional. Currently adding additional functionality such as MTB Project API data.
 
 ## Tech/framework used
 
-Ex. -
-
 <b>Built with</b>
 
-- [Electron](https://electron.atom.io)
+- [Ruby]
+- [ActiveRecord]
+- [TTY-Prompt]
 
 ## Features
 
@@ -36,11 +33,19 @@ Show what the library does as concisely as possible, developers should be able t
 
 ## Installation
 
-Provide step by step series of examples and explanations about how to get a development env running.
+1. Navigate to desired filepath for this app in terminal.
+2. Fork (optional) and clone down the project by running the line below in terminal:
+   \$ git@github.com:m-delarosa/303-mtb-trails-cli-app.git`
+
+3. Install Gems in terminal using:
+   \$ bundle install
+
+4. From repo root directory:
+   \$ ruby runner.rb
 
 ## API Reference
 
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+Future: MTB Project API Compatability
 
 ## Tests
 
