@@ -67,17 +67,50 @@ class Cli
         difficulty_r = prompt.select("How much of a challenge are you looking for?", ["Novice", "Intermediate", "Difficult", "Expert"])
         system("clear")
         puts "MMmmmm, SPICY!"
-        style_r = prompt.select("What's your riding style?", ["Cross Country", "Trail", "Enduro" , "Expert"])
+        style_r = prompt.select("What's your riding style?", ["Cross Country", "Trail", "Enduro" , "Downhill"])
         #remember to add if/else with funny comments on their choice
         system("clear")
         length_r = prompt.select("How long of a ride (miles) are we talking?", ["<10 miles", "11 - 15 miles", "16-20 miles", "21-30 miles", "How about a Frickin Epic!?"])
         # if length_r = 
         system("clear")
         # binding.pry
-        if Trail.where(location: location_r).where(difficulty: difficulty_r).where(style: style_r)
+        if Trail.where(location: location_r).where(difficulty: difficulty_r).where(style: style_r) != []
             trail_reco = Trail.where(location: location_r).where(difficulty: difficulty_r).where(style: style_r).first
             puts "You should defintely check out: #{trail_reco.name}!"
-        else puts "No luck, want to give it another try?"
+            response = prompt.yes?('Would you like to see more details about it now?')
+            if response
+                if (trail_reco.name == "Betasso Preserve")
+                    display_betasso
+                elsif (trail_reco.name == "Walker Ranch")
+                    display_walker
+                elsif (trail_reco.name == "Marshall Mesa")
+                    display_marshall
+                elsif (trail_reco.name == "West Magnolia")
+                    display_magnolia
+                elsif (trail_reco.name == "Heil Valley Ranch")
+                    display_heil
+                elsif (trail_reco.name == "Apex Park Tour")
+                    display_apex
+                elsif (trail_reco.name == "North Table Loop")
+                    display_table
+                elsif (trail_reco.name == "Dakota Ridge")
+                    display_dakota
+                elsif (trail_reco.name == "Green Mountain Novice Loop")
+                    display_gm_novice
+                elsif (trail_reco.name == "Green Mountain Intermediate Loop")
+                    display_gm_intermediate
+                else puts "Trail was not found. Return to main menu." 
+                    gets 
+                    main_menu
+                end
+            else main_menu   
+            end
+        else 
+            response = prompt.yes?('Hmm, no luck, want to give it another try?')
+            if response
+                find_trail
+            else main_menu
+            end
         end
     end
 
