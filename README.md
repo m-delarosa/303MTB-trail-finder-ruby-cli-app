@@ -1,7 +1,8 @@
 <img src='https://github.com/m-delarosa/303-mtb-trails-cli-app/blob/master/design/images/303TF_log_in.png' />
-## Project title
 
-303MTB Trail Finder CLI App - Generates Mountain Bike Trail recommendations for new and veteren riders alike in the 303 area code of Colorado.
+## 303MTB Trail Finder CLI App
+
+Generates decisive mountain bike trail recommendations for new and veteran riders alike, in the Denver/Boulder geographic area.
 
 ## Motivation
 
@@ -25,11 +26,11 @@ Iteration 0 functional. Currently adding additional functionality such as MTB Pr
 
 ## Features
 
-What makes your project stand out?
-
-## Code Example
-
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+- Generates a decisive trail recommendation based on user-submitted criteria such as riding style, length of ride, location and skill level and trail condition.
+- Ability to save trail information to user account for future reference.
+- Ability to remove trails from user account to customize favorite trails.
+- "Find a Trail" feature will not recommend a previously saved trail.
+- Access information for all public mountain bike trails in the Boulder/Denver area.
 
 ## Installation
 
@@ -48,28 +49,20 @@ Show what the library does as concisely as possible, developers should be able t
 
 ## API Reference
 
-Future: MTB Project API Compatability
-
-## Tests
-
-Describe and show how to run the tests with code examples.
+Future Feature: MTB Project API Compatability
 
 ## How to use?
 
-If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.
+Use arrow keys for navigation
 
-## Contribute
-
-Let people know how they can contribute into your project. A [contributing guideline](https://github.com/zulip/zulip-electron/blob/master/CONTRIBUTING.md) will be a big plus.
+Select: enter
+Yes: y
+No: n
 
 ## Credits
 
-Give proper credits. This could be a link to any repo which inspired you to build this project, any blogposts or links to people who contrbuted in this project.
+Collaborator: @NickDongoske
 
-#### Anything else that seems useful
+## Contribute
 
-## License
-
-A short snippet describing the license (MIT, Apache etc)
-
-MIT © [Yourname]()
+Contributions are always welcome! Please read the contribution guidelines first.
