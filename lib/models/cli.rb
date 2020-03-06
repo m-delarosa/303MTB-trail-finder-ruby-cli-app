@@ -16,9 +16,10 @@ class Cli
     #     File.readlines("art.txt") do |line|
     #       puts line
     #     end
-    #   end
+    # end
 
    def welcome
+    # render_ascii_art
     puts "\nWelcome to the 303MTB Trail Finder App!\n\n"
     set_user
    end
@@ -51,7 +52,24 @@ class Cli
     end
 
     def find_trail
-        puts "Starts find trail"
+        system("clear")
+        location_r = prompt.select("Where would you like to ride today?", ["Boulder", "Denver", "Go Back"])
+        system("clear")
+        puts "Awesome, so you'd like to ride in #{location_r}."
+        difficulty_r = prompt.select("How much of a challenge are you looking for?", ["Novice", "Intermediate", "Difficult", "Expert"])
+        system("clear")
+        puts "MMmmmm, SPICY!"
+        style_r = prompt.select("What's your riding style?", ["Cross Country", "Trail", "Enduro" , "Expert"])
+        #remember to add if/else with funny comments on their choice
+        system("clear")
+        length_r = prompt.select("How long of a ride (miles) are we talking?", ["<10 miles", "11 - 15 miles", "16-20 miles", "21-30 miles", "How about a Frickin Epic!?"])
+        system("clear")
+        # binding.pry
+        if Trail.where(location: location_r).where(difficulty: difficulty_r).where(style: style_r)
+            trail_reco = Trail.where(location: location_r).where(difficulty: difficulty_r).where(style: style_r).first
+            puts "You should defintely check out: #{trail_reco.name}!"
+        else puts "No luck, want to give it another try?"
+        end
     end
 
     def saved_trails
