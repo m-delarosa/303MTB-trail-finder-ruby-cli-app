@@ -48,6 +48,7 @@ class Cli
 
    def set_user
     puts "Sign up / Sign In -- Enter username"
+    puts ""
     name = gets.chomp
     self.session_user = User.find_or_create_by( name: name )
     system("clear")
@@ -78,19 +79,54 @@ class Cli
         location_r = prompt.select("Where would you like to ride today?", ["Boulder", "Denver"])
         system("clear")
         puts "Awesome, so you'd like to ride in #{location_r}."
+        puts ""
         difficulty_r = prompt.select("How much of a challenge are you looking for?", ["Novice", "Intermediate", "Difficult", "Expert"])
         system("clear")
-        puts "MMmmmm, SPICY!"
+        if difficulty_r == "Novice"
+            puts "We've all got to start somewhere.".green
+        elsif difficulty_r == "Intermediate"
+            puts "Looking for a solid intermediate ride...".blue
+        elsif difficulty_r == "Difficult"
+            puts "Mmmmm, SPICY!".red
+        elsif difficulty_r == "Expert"
+            puts "You're just going to SEND everything, aren't you?".red
+        end
+        puts ""
         style_r = prompt.select("What's your riding style?", ["Cross Country", "Trail", "Enduro" , "Downhill"])
         #remember to add if/else with funny comments on their choice
         system("clear")
-        length_r = prompt.select("How long of a ride (miles) are we talking?", ["<10 miles", "11 - 15 miles", "16-20 miles", "21-30 miles", "How about a Frickin Epic!?"])
+        if style_r == "Cross Country"
+            puts "Well... you must look good in spandex!".green
+        elsif style_r == "Trail"
+            puts "Nice, looking for a somewhat challenging ride...".green
+        elsif style_r == "Enduro"
+            puts "Enduro Bro!?".green
+        elsif style_r == "Downhill"
+            puts "Move over Aaron Gwin!".green
+        end
+        puts ""
+        length_r = prompt.select("How long of a ride are we talking here?", ["<10 miles", "11 - 15 miles", "16-20 miles", "21-30 miles", "How about a Frickin Epic!?"])
         # if length_r = 
         system("clear")
+        if length_r == "<10 miles"
+            puts "Short and Sweet!".green
+        elsif length_r == "11 - 15 miles"
+            puts "You might want to pack a lunch!".green
+        elsif length_r == "16-20 miles"
+            puts "Nice, let's work on our endurance game today!".green
+        elsif length_r == "21-30 miles"
+            puts "You're a monster!".red
+        elsif length_r == "How about a Frickin Epic!?"
+            puts "Do you know that mountain biking is not a replacement for licensed therapy?".green
+        end
         trail_reco = Trail.where(location: location_r).where(difficulty: difficulty_r).where(style: style_r).first
         trail_reco2 = Trail.where(location: location_r).where(difficulty: difficulty_r).where(style: style_r).second
         # binding.pry
         if (trail_reco != []) && (session_user.trails.include?(trail_reco) == false ) && (trail_reco != nil)
+            puts ""
+            puts "Finding the perfect trail for you now. Press enter to continue."
+            gets
+            system("clear")
             puts "You should defintely check out: #{trail_reco.name}!"
             response = prompt.yes?('Would you like to see more details about it now?')
             if response
@@ -129,6 +165,10 @@ class Cli
             else main_menu   
             end
         elsif (session_user.trails.include?(trail_reco) == true) && (trail_reco2 != nil) && (trail_reco2 != [])
+            puts ""
+            puts "Finding the perfect trail for you now. Press enter to continue."
+            gets
+            system("clear")
             puts "You should defintely check out: #{trail_reco2.name}!"
             response = prompt.yes?('Would you like to see more details about it now?')
             if response
