@@ -13,12 +13,20 @@ class Cli
     end
     
     # def render_ascii_art
-    #     File.readlines("art.txt") do |line|
+    #     File.readlines("./lib/models/art.txt") do |line|
     #       puts line
+    #       puts "HIIII"
     #     end
+    #     puts "Outside"
+    # end
+
+    # def self.logo
+        
     # end
 
    def welcome
+    system("clear")
+    # Cli.logo
     # render_ascii_art
     puts "\nWelcome to the 303MTB Trail Finder App!\n\n"
     set_user
@@ -63,6 +71,7 @@ class Cli
         #remember to add if/else with funny comments on their choice
         system("clear")
         length_r = prompt.select("How long of a ride (miles) are we talking?", ["<10 miles", "11 - 15 miles", "16-20 miles", "21-30 miles", "How about a Frickin Epic!?"])
+        # if length_r = 
         system("clear")
         # binding.pry
         if Trail.where(location: location_r).where(difficulty: difficulty_r).where(style: style_r)
@@ -163,8 +172,10 @@ class Cli
             if response
                 row_to_delete = UserTrail.where(user_id: session_user.id).where(trail_id: apex.id)
                 UserTrail.delete(row_to_delete)
-                saved_trails
-            else saved_trails
+                puts "Your trail has been sucessfuly deleted. Press enter to return to the Denver trails."
+                gets
+                show_denver_trails
+            else show_denver_trails
             end
         else response = prompt.yes?('Would you like to save this trail?')
             if response == true
@@ -191,8 +202,10 @@ class Cli
             if response
                 row_to_delete = UserTrail.where(user_id: session_user.id).where(trail_id: table.id)
                 UserTrail.delete(row_to_delete)
-                saved_trails
-            else saved_trails
+                puts "Your trail has been sucessfuly deleted. Press enter to return to the Denver trails."
+                gets
+                show_denver_trails
+            else show_denver_trails
             end
         else response = prompt.yes?('Would you like to save this trail?')
             if response == true
@@ -219,8 +232,10 @@ class Cli
             if response
                 row_to_delete = UserTrail.where(user_id: session_user.id).where(trail_id: dakota.id)
                 UserTrail.delete(row_to_delete)
-                saved_trails
-            else saved_trails
+                puts "Your trail has been sucessfuly deleted. Press enter to return to the Denver trails."
+                gets
+                show_denver_trails
+            else show_denver_trails
             end
         else response = prompt.yes?('Would you like to save this trail?')
             if response == true
@@ -247,8 +262,10 @@ class Cli
             if response
                 row_to_delete = UserTrail.where(user_id: session_user.id).where(trail_id: gm_novice.id)
                 UserTrail.delete(row_to_delete)
-                saved_trails
-            else saved_trails
+                puts "Your trail has been sucessfuly deleted. Press enter to return to the Denver trails."
+                gets
+                show_denver_trails
+            else show_denver_trails
             end
         else response = prompt.yes?('Would you like to save this trail?')
             if response == true
@@ -274,9 +291,10 @@ class Cli
             response = prompt.yes?('Would you like to remove this trail from your hit list?')
             if response
                 row_to_delete = UserTrail.where(user_id: session_user.id).where(trail_id: gm_intermediate.id)
-                UserTrail.delete(row_to_delete)
-                saved_trails
-            else saved_trails
+                puts "Your trail has been sucessfuly deleted. Press enter to return to Denver trails."
+                gets
+                show_denver_trails
+            else show_denver_trails
             end
         else response = prompt.yes?('Would you like to save this trail?')
             if response == true
@@ -303,8 +321,10 @@ class Cli
             if response
                 row_to_delete = UserTrail.where(user_id: session_user.id).where(trail_id: betasso.id)
                 UserTrail.delete(row_to_delete)
-                saved_trails
-            else saved_trails
+                puts "Your trail has been sucessfuly deleted. Press enter to return to Boulder trails."
+                gets
+                show_boulder_trails
+            else show_boulder_trails
             end
         else response = prompt.yes?('Would you like to save this trail?')
             if response == true
@@ -331,8 +351,10 @@ class Cli
             if response
                 row_to_delete = UserTrail.where(user_id: session_user.id).where(trail_id: walker.id)
                 UserTrail.delete(row_to_delete)
-                saved_trails
-            else saved_trails
+                puts "Your trail has been sucessfuly deleted. Press enter to return to Boulder trails."
+                gets
+                show_boulder_trails
+            else show_boulder_trails
             end
         else response = prompt.yes?('Would you like to save this trail?')
             if response == true
@@ -359,8 +381,10 @@ class Cli
             if response
                 row_to_delete = UserTrail.where(user_id: session_user.id).where(trail_id: marshall.id)
                 UserTrail.delete(row_to_delete)
-                saved_trails
-            else saved_trails
+                puts "Your trail has been sucessfuly deleted. Press enter to return to Boulder trails."
+                gets
+                show_boulder_trails
+            else show_boulder_trails
             end
         else response = prompt.yes?('Would you like to save this trail?')
             if response == true
@@ -387,8 +411,10 @@ class Cli
             if response
                 row_to_delete = UserTrail.where(user_id: session_user.id).where(trail_id: magnolia.id)
                 UserTrail.delete(row_to_delete)
-                saved_trails
-            else saved_trails
+                puts "Your trail has been sucessfuly deleted. Press enter to return to Boulder trails."
+                gets
+                show_boulder_trails
+            else show_boulder_trails
             end
         else response = prompt.yes?('Would you like to save this trail?')
             if response == true
@@ -415,8 +441,10 @@ class Cli
             if response
                 row_to_delete = UserTrail.where(user_id: session_user.id).where(trail_id: heil.id)
                 UserTrail.delete(row_to_delete)
-                saved_trails
-            else saved_trails
+                puts "Your trail has been sucessfuly deleted. Press enter to return to Boulder trails."
+                gets
+                show_boulder_trails
+            else show_boulder_trails
             end
         else response = prompt.yes?('Would you like to save this trail?')
             if response == true
