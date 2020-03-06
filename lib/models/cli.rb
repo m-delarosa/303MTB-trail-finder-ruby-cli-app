@@ -20,13 +20,36 @@ class Cli
     #     puts "Outside"
     # end
 
-    # def self.logo
-        
-    # end
+    def logo
+            puts '                                               _' 
+            puts '                 ___                          (_)'                                                           
+            puts '               _/XXX\ '                                                           
+            puts '_             /XXXXXX\_                                    __'                                                           
+            puts 'X\__    __   /X XXXX XX\                          _       /XX\__      ___'                                                           
+            puts '    \__/  \_/__       \ \               _       _/X\__   /XX XXX\____/XXX\ '                                                           
+            puts ' ___/   \__/   \ \__   \ \__           /  \_//  _ _ \  \     __  /  \____//'                                                           
+            puts '/  __    \  /     \ \_   _//_\___     _/    //           \___/  \/     __/'                                                           
+            puts '__/_______\________\__\_/________\_ _/_____/_____________/_______\____/_______'                                                           
+            puts '                                  /|\ '                                                           
+            puts '                                 / | \ '                                                           
+            puts '                                /  |  \ '                                                           
+            puts '                               /   |   \ '                                                           
+            puts '                              /    |    \ '                                                           
+            puts '                             /     |     \ '                                                           
+            puts '                            /      |      \ '                                                           
+            puts '                           /       |       \ '                                                           
+            puts '                          /        |        \ '                                                           
+            puts '                         /         |         \ '                                                           
+            puts ' ____ __ ____  __  __ _____ ___   _____         _ _   ___ _         _'   
+            puts '|__ //  \__ / |  \/  |_   _| _ ) |_   _| _ __ _(_) | | __(_)_ _  __| |___ _ _ '                                                        
+            puts ' |_ \ () |_ \ | |\/| | | | | _ \   | || |_/ _` | | | | _|| | | \/ _` / -_) _|'                                                        
+            puts '|___/\__/___/ |_|  |_| |_| |___/   |_||_| \__,_|_|_| |_| |_|_||_\__,_\___|_|  '                                                        
+                                                                   
+    end
 
    def welcome
     system("clear")
-    # Cli.logo
+    logo
     # render_ascii_art
     puts "\nWelcome to the 303MTB Trail Finder App!\n\n"
     set_user
@@ -61,7 +84,7 @@ class Cli
 
     def find_trail
         system("clear")
-        location_r = prompt.select("Where would you like to ride today?", ["Boulder", "Denver", "Go Back"])
+        location_r = prompt.select("Where would you like to ride today?", ["Boulder", "Denver"])
         system("clear")
         puts "Awesome, so you'd like to ride in #{location_r}."
         difficulty_r = prompt.select("How much of a challenge are you looking for?", ["Novice", "Intermediate", "Difficult", "Expert"])
@@ -73,9 +96,10 @@ class Cli
         length_r = prompt.select("How long of a ride (miles) are we talking?", ["<10 miles", "11 - 15 miles", "16-20 miles", "21-30 miles", "How about a Frickin Epic!?"])
         # if length_r = 
         system("clear")
+        trail_reco = Trail.where(location: location_r).where(difficulty: difficulty_r).where(style: style_r).first
+        trail_reco2 = Trail.where(location: location_r).where(difficulty: difficulty_r).where(style: style_r).second
         # binding.pry
-        if Trail.where(location: location_r).where(difficulty: difficulty_r).where(style: style_r) != []
-            trail_reco = Trail.where(location: location_r).where(difficulty: difficulty_r).where(style: style_r).first
+        if (trail_reco != []) && (session_user.trails.include?(trail_reco) == false ) && (trail_reco != nil)
             puts "You should defintely check out: #{trail_reco.name}!"
             response = prompt.yes?('Would you like to see more details about it now?')
             if response
@@ -105,6 +129,35 @@ class Cli
                 end
             else main_menu   
             end
+        elsif (session_user.trails.include?(trail_reco) == true) && (trail_reco2 != nil) && (trail_reco2 != [])
+            puts "You should defintely check out: #{trail_reco2.name}!"
+            response = prompt.yes?('Would you like to see more details about it now?')
+            if response
+                if (trail_reco2.name == "Betasso Preserve")
+                    display_betasso
+                elsif (trail_reco2.name == "Walker Ranch")
+                    display_walker
+                elsif (trail_reco2.name == "Marshall Mesa")
+                    display_marshall
+                elsif (trail_reco2.name == "West Magnolia")
+                    display_magnolia
+                elsif (trail_reco2.name == "Heil Valley Ranch")
+                    display_heil
+                elsif (trail_reco2.name == "Apex Park Tour")
+                    display_apex
+                elsif (trail_reco2.name == "North Table Loop")
+                    display_table
+                elsif (trail_reco2.name == "Dakota Ridge")
+                    display_dakota
+                elsif (trail_reco2.name == "Green Mountain Novice Loop")
+                    display_gm_novice
+                elsif (trail_reco2.name == "Green Mountain Intermediate Loop")
+                    display_gm_intermediate
+                else puts "A new trail was not found. Return to main menu." 
+                    gets 
+                    main_menu
+                end
+            end   
         else 
             response = prompt.yes?('Hmm, no luck, want to give it another try?')
             if response
