@@ -11,14 +11,6 @@ class Cli
         @session_user = session_user
         
     end
-    
-    # def render_ascii_art
-    #     File.readlines("./lib/models/art.txt") do |line|
-    #       puts line
-    #       puts "HIIII"
-    #     end
-    #     puts "Outside"
-    # end
 
     def logo
             puts '                                               _' 
@@ -50,7 +42,6 @@ class Cli
    def welcome
     system("clear")
     logo
-    # render_ascii_art
     puts "\nWelcome to the 303MTB Trail Finder App!\n\n"
     set_user
    end
