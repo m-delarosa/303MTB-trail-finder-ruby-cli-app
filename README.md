@@ -35,13 +35,13 @@ Show what the library does as concisely as possible, developers should be able t
 
 1. Navigate to desired filepath for this app in terminal.
 2. Fork (optional) and clone down the project by running the line below in terminal:
-   \$ git@github.com:m-delarosa/303-mtb-trails-cli-app.git`
+   `$ git@github.com:m-delarosa/303-mtb-trails-cli-app.git`
 
 3. Install Gems in terminal using:
-   \$ bundle install
+   `$ bundle install`
 
 4. From repo root directory:
-   \$ ruby runner.rb
+   `$ ruby runner.rb`
 
 ## API Reference
 
