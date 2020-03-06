@@ -114,6 +114,14 @@ class Cli
                     display_gm_novice
                 elsif (trail_reco.name == "Green Mountain Intermediate Loop")
                     display_gm_intermediate
+                elsif (trail_reco.name == "Left Hand OHV")
+                    display_left_hand
+                elsif (trail_reco.name == "Indian Peaks Traverse")
+                    display_indian_peaks
+                elsif (trail_reco.name == "Idaho Springs (Secret Trails)")
+                    display_idaho_springs 
+                elsif (trail_reco.name == "Front Range 40")
+                    display_front_40  
                 else puts "Trail was not found. Return to main menu." 
                     gets 
                     main_menu
@@ -144,6 +152,14 @@ class Cli
                     display_gm_novice
                 elsif (trail_reco2.name == "Green Mountain Intermediate Loop")
                     display_gm_intermediate
+                elsif (trail_reco2.name == "Left Hand OHV")
+                    display_left_hand
+                elsif (trail_reco2.name == "Indian Peaks Traverse")
+                    display_indian_peaks
+                elsif (trail_reco2.name == "Idaho Springs (Secret Trails)")
+                    display_idaho_springs 
+                elsif (trail_reco2.name == "Front Range 40")
+                    display_front_40  
                 else puts "A new trail was not found. Return to main menu." 
                     gets 
                     main_menu
@@ -185,6 +201,14 @@ class Cli
             display_gm_novice
         elsif (response == "Green Mountain Intermediate Loop")
             display_gm_intermediate
+        elsif (response == "Left Hand OHV")
+            display_left_hand
+        elsif (response == "Indian Peaks Traverse")
+            display_indian_peaks
+        elsif (response == "Idaho Springs (Secret Trails)")
+            display_idaho_springs 
+        elsif (response == "Front Range 40")
+            display_front_40  
         else main_menu
         end
         # binding.pry
@@ -216,6 +240,10 @@ class Cli
             display_magnolia
         elsif (response == "Heil Valley Ranch")
             display_heil
+        elsif (response == "Left Hand OHV")
+            display_left_hand
+        elsif (response == "Indian Peaks Traverse")
+            display_indian_peaks
         else view_all_trails
         end
     end
@@ -235,10 +263,15 @@ class Cli
             display_gm_novice
         elsif (response == "Green Mountain Intermediate Loop")
             display_gm_intermediate
+        elsif (response == "Idaho Springs (Secret Trails)")
+            display_idaho_springs 
+        elsif (response == "Front Range 40")
+            display_front_40     
         else view_all_trails
         end
     end
 
+    #trail pages start here
     def display_apex
         system("clear")
         apex = Trail.all.find_by(name: "Apex Park Tour")
@@ -388,6 +421,67 @@ class Cli
         end 
     end
     
+    def display_front_40
+        system("clear")
+        front_40 = Trail.all.find_by(name: "Front Range 40")
+        user_saved_trails = UserTrail.where(user: session_user)
+        puts "#{front_40.name}\nLength: #{front_40.length} Miles\nDifficulty: #{front_40.difficulty}\nStyle: #{front_40.style}"
+        if user_saved_trails.all.find {|usertrail| usertrail.trail_id == front_40.id }
+            response = prompt.yes?('Would you like to remove this trail from your hit list?')
+            if response
+                row_to_delete = UserTrail.where(user_id: session_user.id).where(trail_id: front_40.id)
+                UserTrail.delete(row_to_delete)
+                puts "Your trail has been sucessfuly deleted. Press enter to return to the Denver trails."
+                gets
+                show_denver_trails
+            else show_denver_trails
+            end
+        else response = prompt.yes?('Would you like to save this trail?')
+            if response == true
+                UserTrail.find_or_create_by(user: session_user, trail: front_40)
+                system("clear")
+                puts "Trail Saved Sucessfully! Now Go Ride!"
+                response = prompt.yes?("...or would you like to view other Denver Trails now? (nerd)")
+                if response == true
+                    show_denver_trails
+                else main_menu
+                end
+            else show_denver_trails
+            end
+        end 
+    end
+
+    def display_idaho_springs
+        system("clear")
+        idaho_springs = Trail.all.find_by(name: "Idaho Springs (Secret Trails)")
+        user_saved_trails = UserTrail.where(user: session_user)
+        puts "#{idaho_springs.name}\nLength: #{idaho_springs.length} Miles\nDifficulty: #{idaho_springs.difficulty}\nStyle: #{idaho_springs.style}"
+        if user_saved_trails.all.find {|usertrail| usertrail.trail_id == idaho_springs.id }
+            response = prompt.yes?('Would you like to remove this trail from your hit list?')
+            if response
+                row_to_delete = UserTrail.where(user_id: session_user.id).where(trail_id: idaho_springs.id)
+                UserTrail.delete(row_to_delete)
+                puts "Your trail has been sucessfuly deleted. Press enter to return to the Denver trails."
+                gets
+                show_denver_trails
+            else show_denver_trails
+            end
+        else response = prompt.yes?('Would you like to save this trail?')
+            if response == true
+                UserTrail.find_or_create_by(user: session_user, trail: idaho_springs)
+                system("clear")
+                puts "Trail Saved Sucessfully! Now Go Ride!"
+                response = prompt.yes?("...or would you like to view other Denver Trails now? (nerd)")
+                if response == true
+                    show_denver_trails
+                else main_menu
+                end
+            else show_denver_trails
+            end
+        end 
+    end
+
+    #boulder trails start here
     def display_betasso
         system("clear")
         betasso = Trail.all.find_by(name: "Betasso Preserve")
@@ -536,6 +630,66 @@ class Cli
             else show_boulder_trails
             end
         end
+    end
+
+    def display_indian_peaks
+        system("clear")
+        indian_peaks = Trail.all.find_by(name: "Indian Peaks Traverse")
+        user_saved_trails = UserTrail.where(user: session_user)
+        puts "#{indian_peaks.name}\nLength: #{indian_peaks.length} Miles\nDifficulty: #{indian_peaks.difficulty}\nStyle: #{indian_peaks.style}"
+        if user_saved_trails.all.find {|usertrail| usertrail.trail_id == indian_peaks.id }
+            response = prompt.yes?('Would you like to remove this trail from your hit list?')
+            if response
+                row_to_delete = UserTrail.where(user_id: session_user.id).where(trail_id: indian_peaks.id)
+                UserTrail.delete(row_to_delete)
+                puts "Your trail has been sucessfuly deleted. Press enter to return to Boulder trails."
+                gets
+                show_boulder_trails
+            else show_boulder_trails
+            end
+        else response = prompt.yes?('Would you like to save this trail?')
+            if response == true
+                UserTrail.find_or_create_by(user: session_user, trail: indian_peaks)
+                system("clear")
+                puts "Trail Saved Sucessfully! Now Go Ride!"
+                response = prompt.yes?("...or would you like to view other Boulder Trails now? (nerd)")
+                if response == true
+                    show_boulder_trails
+                else main_menu
+                end
+            else show_boulder_trails
+            end
+        end 
+    end
+
+    def display_left_hand
+        system("clear")
+        left_hand = Trail.all.find_by(name: "Left Hand OHV")
+        user_saved_trails = UserTrail.where(user: session_user)
+        puts "#{left_hand.name}\nLength: #{left_hand.length} Miles\nDifficulty: #{left_hand.difficulty}\nStyle: #{left_hand.style}"
+        if user_saved_trails.all.find {|usertrail| usertrail.trail_id == left_hand.id }
+            response = prompt.yes?('Would you like to remove this trail from your hit list?')
+            if response
+                row_to_delete = UserTrail.where(user_id: session_user.id).where(trail_id: left_hand.id)
+                UserTrail.delete(row_to_delete)
+                puts "Your trail has been sucessfuly deleted. Press enter to return to Boulder trails."
+                gets
+                show_boulder_trails
+            else show_boulder_trails
+            end
+        else response = prompt.yes?('Would you like to save this trail?')
+            if response == true
+                UserTrail.find_or_create_by(user: session_user, trail: left_hand)
+                system("clear")
+                puts "Trail Saved Sucessfully! Now Go Ride!"
+                response = prompt.yes?("...or would you like to view other Boulder Trails now? (nerd)")
+                if response == true
+                    show_boulder_trails
+                else main_menu
+                end
+            else show_boulder_trails
+            end
+        end 
     end
 
 end
