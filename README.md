@@ -16,7 +16,7 @@ Iteration 0 complete. Currently adding additional functionality such as MTB Proj
 
 ## Screenshots
 
-Include logo/demo screenshot etc.
+<img src='https://github.com/m-delarosa/303-mtb-trails-cli-app/blob/master/design/images/303TF_log_in.png' />
 
 ## Tech/framework used
 
