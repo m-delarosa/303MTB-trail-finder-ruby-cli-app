@@ -1,71 +1,67 @@
-# Mod 1 ActiveRecord Starter Repo
+## Project title
 
-In `config/database.yml`, you can change the name of the database from `db/cats.sqlite3` to whatever reflects your project. For example: `db/notes.sqlite3`. Doesn't really matter what you call the db. 
+303MTB Trail Finder CLI App - Generates Mountain Bike Trail recommendations for new and veteren riders alike in the 303 area code of Colorado.
 
+## Motivation
 
+A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
 
-## ActiveRecord Methods
-These common ActiveRecord methods will help you interact with your database. Please refer to the ActiveRecord
-docs for what they do and how to use them. (If the docs talk about Rails, that is ok! ActiveRecord works very
- similar with or without Rails.)
-```
-  .create (.new, .save)
-  .all
-  .count
-  .find
-  .find_by
-  .where
-```
+On average 52 people move to the Denver/Boulder metro area each day, a suprising percentage of which, are trail users. As the metro area cotinues to expand, so does the volume of traffic our trails receive. This app is meant to take the guesswork out of finding the perfect trail to ride each day, based on the user's mood and preferences. It's meant to limit your time researching trails, so you can research less and ride more!
 
-#### Notes
+The 303MTB Trail Finder app is also meant to help preserve our trails. When a trail in our area is ridden in a muddy state, it causes permanent damage to the soil, which will need to be repaired by volunteers. In order to limit the amount of damage to our trails, the 303MTB Trail Finder App will only recommend trails that have been reported to be in a dry or safe condition. Preventing the user from making a long trip to trailhead, only to find out it is closed or muddy.
 
-*Remember*, any model that will have a corresponding table in the database needs to inherit from `ActiveRecord::Base`
-ex:
-```
-class Cat < ActiveRecord::Base
-  # customer methods defined here
-end
-```
+## Build status
 
-- To view database, you can run `sqlite3 db/cats.db`, then can run `.schema` or `.tables` and can run any SQL commands. (Don't need to do this anymore though! ActiveRecord gives us a schema file!)
+Iteration 0 complete. Currently adding additional functionality such as MTB Project API data.
 
+## Screenshots
 
-### Steps to setup Ruby app with activerecord
-(New for ActiveRecord 6.0)
+Include logo/demo screenshot etc.
 
+## Tech/framework used
 
-## The following steps are already done for you in this boiler plate repo. 
-## The steps below are provided to you as a reference only. 
-## You're not expected to memorize this (please don't).
+Ex. -
 
+<b>Built with</b>
 
-1. In root of project, run `bundle init`
-1. Add gems: 
-  `bundle add activerecord pry sinatra, sinatra-activerecord rake sqlite3 require_all`
-  run `bundle install`
-1. mkdir config and lib 
-1. mkdir lib/models
-1. touch config/environment.rb config/database.yml
-1. Create your model files and models (make sure to have your models inherit from ActiveRecord::Base)
-1. In config/environment.rb:
-```
-  require 'bundler/setup'
-  Bundler.require
+- [Electron](https://electron.atom.io)
 
-  require_all 'lib'
-```
-1. In config/database.yml:
-  ```
-  development:
-    adapter: sqlite3
-    database: db/cats.sqlite3
-  ```
-1. Touch Rakefile - require ‘config/environment.rb’ and require_relative ‘sinatra/activerecord/rake’ 
-1. Run rake -T to make sure we have access to raketasks
-1. Run `rake db:create_migration NAME=create_cats_table` (will create the db folder if it doesn’t already exist) and will add the migration file to db/migration
-1. Write migration file, then run `rake db:migrate`
-1. Then can see schema in file structure, can also drop into sqlite3 cats.db to see the tables and schema, but don’t really need to do that anymore. *Review rollback here*
-1. Create seeds in db/seeds.rb and run `rake db:seed`
-1. Now can put a pry in environment.rb to run <ModelName>.all and see your seeds.
+## Features
 
-Make sure your models inherit from `ActiveRecord::Base`
+What makes your project stand out?
+
+## Code Example
+
+Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+
+## Installation
+
+Provide step by step series of examples and explanations about how to get a development env running.
+
+## API Reference
+
+Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+
+## Tests
+
+Describe and show how to run the tests with code examples.
+
+## How to use?
+
+If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.
+
+## Contribute
+
+Let people know how they can contribute into your project. A [contributing guideline](https://github.com/zulip/zulip-electron/blob/master/CONTRIBUTING.md) will be a big plus.
+
+## Credits
+
+Give proper credits. This could be a link to any repo which inspired you to build this project, any blogposts or links to people who contrbuted in this project.
+
+#### Anything else that seems useful
+
+## License
+
+A short snippet describing the license (MIT, Apache etc)
+
+MIT © [Yourname]()
