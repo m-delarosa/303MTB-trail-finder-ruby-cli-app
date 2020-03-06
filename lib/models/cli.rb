@@ -12,9 +12,14 @@ class Cli
         
     end
     
+    # def render_ascii_art
+    #     File.readlines("art.txt") do |line|
+    #       puts line
+    #     end
+    #   end
 
    def welcome
-    puts "\nWelcome to the 303-MTB Trail Finder App!\n\n"
+    puts "\nWelcome to the 303MTB Trail Finder App!\n\n"
     set_user
    end
 
@@ -273,95 +278,141 @@ class Cli
     def display_betasso
         system("clear")
         betasso = Trail.all.find_by(name: "Betasso Preserve")
-        
+        user_saved_trails = UserTrail.where(user: session_user)
         puts "#{betasso.name}\nLength: #{betasso.length} Miles\nDifficulty: #{betasso.difficulty}\nStyle: #{betasso.style}"
-        response = prompt.yes?('Would you like to save this trail?')
-        if response == true
-            UserTrail.find_or_create_by(user: session_user, trail: betasso)
-            system("clear")
-            puts "Trail Saved Sucessfully! Now Go Ride!"
-            response = prompt.yes?("...or would you like to view other Boulder Trails now? (nerd)")
-            if response == true
-                show_boulder_trails
-            else main_menu
+        if user_saved_trails.all.find {|usertrail| usertrail.trail_id == betasso.id }
+            response = prompt.yes?('Would you like to remove this trail from your hit list?')
+            if response
+                row_to_delete = UserTrail.where(user_id: session_user.id).where(trail_id: betasso.id)
+                UserTrail.delete(row_to_delete)
+                saved_trails
+            else saved_trails
             end
-        else show_boulder_trails
-        end
+        else response = prompt.yes?('Would you like to save this trail?')
+            if response == true
+                UserTrail.find_or_create_by(user: session_user, trail: betasso)
+                system("clear")
+                puts "Trail Saved Sucessfully! Now Go Ride!"
+                response = prompt.yes?("...or would you like to view other Boulder Trails now? (nerd)")
+                if response == true
+                    show_boulder_trails
+                else main_menu
+                end
+            else show_boulder_trails
+            end
+        end 
     end
 
     def display_walker
         system("clear")
         walker = Trail.all.find_by(name: "Walker Ranch")
-        
+        user_saved_trails = UserTrail.where(user: session_user)
         puts "#{walker.name}\nLength: #{walker.length} Miles\nDifficulty: #{walker.difficulty}\nStyle: #{walker.style}"
-        response = prompt.yes?('Would you like to save this trail?')
-        if response == true
-            UserTrail.find_or_create_by(user: session_user, trail: walker)
-            system("clear")
-            puts "Trail Saved Sucessfully! Now Go Ride!"
-            response = prompt.yes?("...or would you like to view other Boulder Trails now? (nerd)")
-            if response == true
-                show_boulder_trails
-            else main_menu
+        if user_saved_trails.all.find {|usertrail| usertrail.trail_id == walker.id }
+            response = prompt.yes?('Would you like to remove this trail from your hit list?')
+            if response
+                row_to_delete = UserTrail.where(user_id: session_user.id).where(trail_id: walker.id)
+                UserTrail.delete(row_to_delete)
+                saved_trails
+            else saved_trails
             end
-        else show_boulder_trails
+        else response = prompt.yes?('Would you like to save this trail?')
+            if response == true
+                UserTrail.find_or_create_by(user: session_user, trail: walker)
+                system("clear")
+                puts "Trail Saved Sucessfully! Now Go Ride!"
+                response = prompt.yes?("...or would you like to view other Boulder Trails now? (nerd)")
+                if response == true
+                    show_boulder_trails
+                else main_menu
+                end
+            else show_boulder_trails
+            end
         end
     end
 
     def display_marshall
         system("clear")
         marshall = Trail.all.find_by(name: "Marshall Mesa")
-        
+        user_saved_trails = UserTrail.where(user: session_user)
         puts "#{marshall.name}\nLength: #{marshall.length} Miles\nDifficulty: #{marshall.difficulty}\nStyle: #{marshall.style}"
-        response = prompt.yes?('Would you like to save this trail?')
-        if response == true
-            UserTrail.find_or_create_by(user: session_user, trail: marshall)
-            system("clear")
-            puts "Trail Saved Sucessfully! Now Go Ride!"
-            response = prompt.yes?("...or would you like to view other Boulder Trails now? (nerd)")
-            if response == true
-                show_boulder_trails
-            else main_menu
+        if user_saved_trails.all.find {|usertrail| usertrail.trail_id == marshall.id }
+            response = prompt.yes?('Would you like to remove this trail from your hit list?')
+            if response
+                row_to_delete = UserTrail.where(user_id: session_user.id).where(trail_id: marshall.id)
+                UserTrail.delete(row_to_delete)
+                saved_trails
+            else saved_trails
             end
-        else show_boulder_trails
+        else response = prompt.yes?('Would you like to save this trail?')
+            if response == true
+                UserTrail.find_or_create_by(user: session_user, trail: marshall)
+                system("clear")
+                puts "Trail Saved Sucessfully! Now Go Ride!"
+                response = prompt.yes?("...or would you like to view other Boulder Trails now? (nerd)")
+                if response == true
+                    show_boulder_trails
+                else main_menu
+                end
+            else show_boulder_trails
+            end
         end
     end
 
     def display_magnolia
         system("clear")
-        magnoliadisplay_magnolia = Trail.all.find_by(name: "West Magnolia")
-        
-        puts "#{magnoliadisplay_magnolia.name}\nLength: #{magnoliadisplay_magnolia.length} Miles\nDifficulty: #{magnoliadisplay_magnolia.difficulty}\nStyle: #{magnoliadisplay_magnolia.style}"
-        response = prompt.yes?('Would you like to save this trail?')
-        if response == true
-            UserTrail.find_or_create_by(user: session_user, trail: magnolia)
-            system("clear")
-            puts "Trail Saved Sucessfully! Now Go Ride!"
-            response = prompt.yes?("...or would you like to view other Boulder Trails now? (nerd)")
-            if response == true
-                show_boulder_trails
-            else main_menu
+        magnolia = Trail.all.find_by(name: "West Magnolia")
+        user_saved_trails = UserTrail.where(user: session_user)
+        puts "#{magnolia.name}\nLength: #{magnolia.length} Miles\nDifficulty: #{magnolia.difficulty}\nStyle: #{magnolia.style}"
+        if user_saved_trails.all.find {|usertrail| usertrail.trail_id == magnolia.id }
+            response = prompt.yes?('Would you like to remove this trail from your hit list?')
+            if response
+                row_to_delete = UserTrail.where(user_id: session_user.id).where(trail_id: magnolia.id)
+                UserTrail.delete(row_to_delete)
+                saved_trails
+            else saved_trails
             end
-        else show_boulder_trails
+        else response = prompt.yes?('Would you like to save this trail?')
+            if response == true
+                UserTrail.find_or_create_by(user: session_user, trail: magnolia)
+                system("clear")
+                puts "Trail Saved Sucessfully! Now Go Ride!"
+                response = prompt.yes?("...or would you like to view other Boulder Trails now? (nerd)")
+                if response == true
+                    show_boulder_trails
+                else main_menu
+                end
+            else show_boulder_trails
+            end
         end
     end
 
     def display_heil
         system("clear")
         heil = Trail.all.find_by(name: "Heil Valley Ranch")
-        
+        user_saved_trails = UserTrail.where(user: session_user)
         puts "#{heil.name}\nLength: #{heil.length} Miles\nDifficulty: #{heil.difficulty}\nStyle: #{heil.style}"
-        response = prompt.yes?('Would you like to save this trail?')
-        if response == true
-            UserTrail.find_or_create_by(user: session_user, trail: heil)
-            system("clear")
-            puts "Trail Saved Sucessfully! Now Go Ride!"
-            response = prompt.yes?("...or would you like to view other Boulder Trails now? (nerd)")
-            if response == true
-                show_boulder_trails
-            else main_menu
+        if user_saved_trails.all.find {|usertrail| usertrail.trail_id == heil.id }
+            response = prompt.yes?('Would you like to remove this trail from your hit list?')
+            if response
+                row_to_delete = UserTrail.where(user_id: session_user.id).where(trail_id: heil.id)
+                UserTrail.delete(row_to_delete)
+                saved_trails
+            else saved_trails
             end
-        else show_boulder_trails
+        else response = prompt.yes?('Would you like to save this trail?')
+            if response == true
+                UserTrail.find_or_create_by(user: session_user, trail: heil)
+                system("clear")
+                puts "Trail Saved Sucessfully! Now Go Ride!"
+                response = prompt.yes?("...or would you like to view other Boulder Trails now? (nerd)")
+                if response == true
+                    show_boulder_trails
+                else main_menu
+                end
+            else show_boulder_trails
+            end
         end
     end
+
 end
