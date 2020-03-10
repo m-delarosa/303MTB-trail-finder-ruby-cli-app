@@ -6,8 +6,6 @@ Generates decisive mountain bike trail recommendations for new and veteran rider
 
 ## Motivation
 
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
-
 On average 52 people move to the Denver/Boulder metro area each day, a suprising percentage of which, are trail users. As the metro area cotinues to expand, so does the volume of traffic our trails receive. This app is meant to take the guesswork out of finding the perfect trail to ride each day, based on the user's mood and preferences. It's meant to limit your time researching trails, so you can research less and ride more!
 
 The 303MTB Trail Finder app is also meant to help preserve our trails. When a trail in our area is ridden in a muddy state, it causes permanent damage to the soil, which will need to be repaired by volunteers. In order to limit the amount of damage to our trails, the 303MTB Trail Finder App will only recommend trails that have been reported to be in a dry or safe condition. Preventing the user from making a long trip to trailhead, only to find out it is closed or muddy.
