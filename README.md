@@ -62,7 +62,3 @@ No: n
 ## Credits
 
 ASCII Artwork: @NickDongoske
-
-## Contribute
-
-Contributions are always welcome! Please read the contribution guidelines first.
