@@ -54,12 +54,14 @@ Future Feature: MTB Project API Compatability
 Use arrow keys for navigation
 
 Select: enter
+
 Yes: y
+
 No: n
 
 ## Credits
 
-Collaborator: @NickDongoske
+ASCII Artwork: @NickDongoske
 
 ## Contribute
 
